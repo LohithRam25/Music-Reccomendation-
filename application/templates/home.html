@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Music Recommendation System</title>
+    <style>
+        body {
+            background-color: #2C3E50;
+            font-family: 'Arial', sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            color: #ECF0F1;
+        }
+
+        .container {
+            background-color: #34495E;
+            border-radius: 12px;
+            padding: 20px;
+            width: 400px;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+            text-align: center;
+            display: flex;
+        }
+
+        h1 {
+            color: #F39C12;
+            margin-bottom: 20px;
+        }
+
+        input[type="text"] {
+            width: 100%;
+            padding: 12px;
+            margin: 10px 0;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            background-color: #ECF0F1;
+            color: #2C3E50;
+        }
+
+        button {
+            background-color: #F39C12;
+            color: white;
+            padding: 12px 20px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background-color 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #E67E22;
+        }
+
+        .recommendations {
+            margin-top: 20px;
+            background-color: #1ABC9C;
+            border-radius: 8px;
+            padding: 15px;
+            font-size: 16px;
+        }
+
+        .song {
+            margin: 5px 0;
+            background-color: #16A085;
+            padding: 10px;
+            border-radius: 6px;
+            color: white;
+        }
+          .track-name {
+            margin: 0 1px;
+            padding: 1px;
+            allign:left
+
+        }
+    </style>
+</head>
+<body>
+
+ <div class="container">
+        <div class="cinema-screen">
+            <h1>Find Similar Songs</h1>
+            <form action="/" method="post">
+                {% csrf_token %}
+                <input type="text" class="movie-input" name="song_name" placeholder="Enter a Song name">
+                <button type="submit" class="submit-btn">Similar Songs</button>
+            </form>
+          <ul>
+
+  {% for track_name, artist_name in reccomendations %}
+            <div class="recommendation">
+                <div class="track-name">Track-->{{ track_name }}|| Artist-->{{ artist_name }} </div>
+             <br>
+            </div>
+            {% endfor %}
+              <h2>{{msg}}</h2>
+</ul>
+        </div>
+    </div>
+
+
+
+</body>
+</html>
